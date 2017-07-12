@@ -1,0 +1,30 @@
+import java.util.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class main{
+	public static void main(String[] args){
+		Queue<Integer> collatz = new LinkedList<Integer>();
+		//Assign first element
+		int start = 10;
+		//Replace the above later
+		collatz.add(start);
+		try {
+			FileWriter writer = new FileWriter("collatz.txt");
+			BufferedWriter file = new BufferedWriter(writer);
+		}
+		for(int i = 0; i < 20; i++){
+			int item = collatz.remove();	// remove item from queue for processing
+			collatz.add(item * 2);			// all items have doubles
+			if(item%3==1){					// not all items can have this transform applied
+				collatz.add((item - 1) / 3);
+			}
+			// Attend to the present item
+			System.out.println(item);
+			file.write(String.valueOf(item));
+			// Replace the above later
+		}
+		
+	}
+}
